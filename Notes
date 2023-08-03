@@ -1,0 +1,68 @@
+in orther to make the virtual work we need a pointer called vPointer
+
+without the virtual keyword
+sizeof(base) = 4.
+sizeof(derived) = 8;//because it inherits the base variable
+
+With the virtual keyword
+sizeof(base) = 8.// Tells the program that a function inherits from it and acts accordingly
+sizeof(derived) = 12;// Why it is 12 I have no idea.
+
+The size of Derived is the size of Base (8) plus the size of Derived (4), which is 12.
+
+The Vtable is what make the Polymorphisme work 
+
+Virtual : turn on the vTable so we can easily see or understand witch function to be executed
+
+
+        ****    there is a difference between RunTime and CompileTime of course ***
+
+-------> at compile time the Compiler understand witch function to witch caller ....
+
+when we do make something virtual that's when we get the Polymorphisme
+
+
+Key Points:
+
+---> there always a Vtable for every Type and not every instance of a type !!!! But when there is a Virtual inside it of course
+---> Virtual Table only stores addresses of virtual function
+
+Pure virtual Function : it has nothing to do so better we add a flag to it = 0 to tell the parser (Part of the compiler) that it will serve
+as only a virtual and it will be overriden by the derived classes...
+
+any class that has a Pure Virtual Function will never be called a class but it's name will change and becomes : 
+-->     An abstract class
+when becomes abstract we can't instantiate objects but only pointers... (Very important !!)
+
+Recap !!
+--> Why we need Polymorphisme and when ?
+
+Method = function inside a class
+
+Polymorphisme : the capability of an object to act in many differente ways 
+this happens through two concepts witch are :
+**** Function overloading ...                           ***Function Overriding ....
+same func with differente parameters                 a child class has the same func name as it's base class
+                                                     but the behaviour or the definition of it is differente
+SINGLE ACTION IN A differente WAYS = Polymorphisme.
+
+Abstraction : mean hiding all the details and showing only the important stuff from the User
+        example:
+        -> The Coffee Machine u only need to know the selection and the payment.
+           without any need to know that the water hot degree or the quantity of the milk in it or anything !! (This Called Abstract Idea)
+        -> Like ANY Other Object in Real life (Car - Phone - Lap...)
+****> In Programming the Users shoud have an Abstract access to our program 
+so they do not need to know how the classes are handing details or how it works they only need to have an abstract idea
+they only need to know what to make based on this class...
+Very Important in Big Projects... (The Programmer for example need to worry only about it's Task)
+
+to Make this Happen We Need to differeciate between:
+
+                        ***INTERFACE  &&  IMPLEMENTATION***
+the thing that gives the opportunity to classes to communicate between each Other
+like getting some infos about a class so we can use it inside the current class
+-> for example if your coding a FooClass inside a chess board and u need to see if the king is in echec
+u only need an INTERFACE to give u the idea like this isKinginEchec() if true u do the code if not u do ur logic 
+so u don't need to know how it works or it's logic.
+-> The idea is to make it Independent and have no idea what going on on the other side so we can do our changes to the 
+other classes without any limitations..
