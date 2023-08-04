@@ -6,17 +6,17 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:20:04 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/02 13:39:16 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:02:45 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 #define CAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 public:
     Cat     ( void );

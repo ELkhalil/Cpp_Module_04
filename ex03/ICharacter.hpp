@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 10:45:22 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:13:25 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 12:48:17 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 14:52:58 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 #define ICHARACTER_HPP
 
 #include <iostream>
-// #include "AMateria.hpp"
+#include "AMateria.hpp"
 class AMateria;
 
-class   ICharacter
+class ICharacter
 {
 public:
-    virtual         ~ICharacter();
-    virtual         std::string const & getName() const = 0;
-    virtual void    equip (AMateria* m) = 0;
-    virtual void    unequip(int idx) = 0;
-    virtual void    use(int idx, ICharacter& target) = 0;
+    virtual ~ICharacter();
+    virtual std::string const & getName() const = 0;
+    virtual void equip(AMateria* m) = 0;
+    virtual void unequip(int idx) = 0;
+    virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

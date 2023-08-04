@@ -6,11 +6,11 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:33:19 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/02 17:55:33 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:04:39 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
@@ -18,7 +18,7 @@ void    arrayOfAnimals( void )
 {
     int     arraySize = 8;
 
-    Animal  *animals[arraySize];
+    AAnimal  *animals[arraySize];
 
     std::cout << "---------------Dogs--------------" << std::endl;
     for (int i = 0; i < arraySize / 2; i++)
@@ -41,8 +41,8 @@ void    subjectTest ( void )
 {
     {
         /* Test from Subject page */
-        const Animal* j = new Dog();
-        const Animal* i = new Cat();
+        const AAnimal* j = new Dog();
+        const AAnimal* i = new Cat();
         delete j;//should not create a leak
         delete i;
     }
@@ -50,7 +50,7 @@ void    subjectTest ( void )
 
 int main( void )
 {
-    subjectTest();
-    // arrayOfAnimals();
+    // subjectTest();
+    arrayOfAnimals();
     return 0;
 }

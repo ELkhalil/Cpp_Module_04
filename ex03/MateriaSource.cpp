@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 14:58:46 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 16:11:57 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 16:20:06 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 16:36:57 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
-// MateriaSource Constructor
+// MateriaSource Constructors
 MateriaSource::MateriaSource    ( void )
 {
-    //std::cout << "MateriaSource Default Constructor" << std::endl;
+    // std::cout << "MateriaSource Constructor" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         _learnedMaterias[i] = NULL;
     }
 }
 
-MateriaSource::MateriaSource   ( MateriaSource const& other )
+MateriaSource::MateriaSource    ( MateriaSource const& other )
 {
-    //std::cout << "MateriaSource Copy Constructor" << std::endl;
+    // std::cout << "MateriaSource Copy Constructor" << std::endl;
     (*this) = other;
 }
 
-MateriaSource::~MateriaSource  ( void )
+MateriaSource::~MateriaSource   ( void )
 {
-    //std::cout << "MateriaSource Destructor" << std::endl;
+    // std::cout << "MateriaSource Destructor" << std::endl;
     for (int i = 0; i < 4; ++i) 
     {
         if (_learnedMaterias[i])
@@ -39,10 +39,9 @@ MateriaSource::~MateriaSource  ( void )
 }
 
 // MateriaSource Operators
-
 MateriaSource&  MateriaSource::operator=( MateriaSource const& other )
 {
-    //std::cout << "MateriaSource Copy Assignement Operator" << std::endl;
+    // std::cout << "MateriaSource Copy Assignement Operator" << std::endl;
     if (this != &other)
     {
         for (int i = 0; i < 4; i++)
@@ -62,20 +61,24 @@ MateriaSource&  MateriaSource::operator=( MateriaSource const& other )
     return (*this);
 }
 
-// MateriaSource Member Functions
-
+// MateriaSource Methods
 void        MateriaSource::learnMateria(AMateria* m)
 {
+    int     count = 0;
     for (int i = 0; i < 4; i++)
     {
         if (_learnedMaterias[i] == NULL)
         {
-            _learnedMaterias[i] = m;
+            _learnedMaterias[i] = m->clone();
             return ;
         }
-        
+        count++;
     }
-    
+    if (count >= 4)
+    {
+        std::cout << "Can't Learn this Materia" << std::endl;
+        std::cout << "The Learned Materia inventory is full" << std::endl;
+    }
 }
 
 AMateria*   MateriaSource::createMateria(std::string const & type)
@@ -90,6 +93,7 @@ AMateria*   MateriaSource::createMateria(std::string const & type)
     return NULL;
 }
 
+// Helper Methods
 AMateria*   MateriaSource::getLearnedMateria(int idx) const
 {
     if (idx >= 0 && idx < 4)

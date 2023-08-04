@@ -6,7 +6,7 @@
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 11:31:40 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/02 17:46:35 by aelkhali         ###   ########.fr        #
+#    Updated: 2023/08/03 10:04:13 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # loading source files :
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
 all : $(NAME)
 	@echo "You Can Use $(GREEN)*** $(NAME) ***$(STOP)"

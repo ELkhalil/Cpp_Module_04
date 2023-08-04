@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/01 11:31:40 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/03 15:48:44 by aelkhali         ###   ########.fr        #
+#    Created: 2023/08/04 11:34:01 by aelkhali          #+#    #+#              #
+#    Updated: 2023/08/04 16:36:35 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Output Program Name
-NAME = InterfaceRecap
+NAME = testing
 
 # Colors :
 GREEN = \033[0;32m

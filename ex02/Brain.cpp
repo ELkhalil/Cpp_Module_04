@@ -6,14 +6,13 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:47:36 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/02 17:24:00 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:02:28 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
 // Brain Constructors
-
 Brain::Brain    ( void )
 {
     std::cout << "Brain Class Default Constructor" << std::endl;

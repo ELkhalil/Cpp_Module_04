@@ -5,141 +5,136 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 11:49:23 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:13:14 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 12:52:56 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 16:25:55 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-// Character Constructor
-Character::Character   ( void )
+// Character Constructors
+Character::Character    ( void )
 {
-   // std::cout << "Character Default Constructor" << std::endl;
-    this->_name = "DefaultCharacter";
-    this->_save = NULL;
+    // std::cout << "Character Default Constructor" << std::endl;
+    this->_name = "Default Character";
+    this->_reserve = NULL;
     for (int i = 0; i < 4; i++)
     {
-        _inventory[i] = NULL;
+       this->_inventoryMA[i] = NULL;
     }
 }
 
-Character::Character(std::string const& name)
+Character::Character    ( std::string const& name ) : _name(name)
 {
-   // std::cout << "Character parametrized Constructor" << std::endl;
-    this->_name = name;
-    this->_save = NULL;
-    for (int i = 0; i < 4; i++) 
+    // std::cout << "Character Parametrized Constructor" << std::endl;
+    this->_reserve = NULL;
+    for (int i = 0; i < 4; i++)
     {
-        _inventory[i] = NULL;
+       this->_inventoryMA[i] = NULL;
     }
 }
 
-Character::Character(const Character& other)
+Character::Character    ( Character const& other )
 {
-   // std::cout << "Character Copy Constructor" << std::endl;
-    if (this != & other)
+    // std::cout << "Character Copy Constructor" << std::endl;
+    (*this) = other;
+}
+
+Character::~Character    ( void )
+{
+    // std::cout << "Character Destructor" << std::endl;
+    for (int i = 0; i < 4; i++)
     {
-        this->_name = other.getName();
-        for (int i = 0; i < 4; i++)
-        {
-            AMateria*   otherMateria = other.getInventory(i);
-            if (otherMateria != NULL)
-                _inventory[i] = otherMateria->clone();
-            else
-                _inventory[i] = NULL;
-        }
+        if (this->_inventoryMA[i] != NULL)
+            delete this->_inventoryMA[i];
     }
 }
 
 // Character Operators
-Character&  Character::operator=(const Character& other)
+Character&  Character::operator= ( Character const& other )
 {
-   // std::cout << "Character Copy Assignement Operator" << std::endl;
-    if (this != &other) 
+    // std::cout << "Character Copy Assignement Operator" << std::endl;
+    if (this != &other)
     {
-        _name = other.getName();
-        for (int i = 0; i < 4; i++) 
+        this->_name = other.getName();
+        this->_reserve = NULL;
+        for (int i = 0; i < 4; i++)
         {
-            if (_inventory[i])
-                delete _inventory[i];
-            _inventory[i] = NULL;
+            if (_inventoryMA[i] != NULL)
+                delete _inventoryMA[i];
+            _inventoryMA[i] = NULL;
         }
-        for (int i = 0; i < 4; i++) 
+        for (int  i = 0; i < 4; i++)
         {
             if (other.getInventory(i) != NULL)
-                _inventory[i] = other.getInventory(i)->clone();
+                _inventoryMA[i] = other.getInventory(i)->clone();
             else
-                _inventory[i] = NULL;
+                _inventoryMA[i] = NULL;
         }
     }
-    return *this;
+    return (*this);
 }
 
-Character::~Character()
-{
-   // std::cout << "Character Destructor" << std::endl;
-    for (int i = 0; i < 4; i++) 
-    {
-        if (_inventory[i])
-            delete _inventory[i];
-    }
-}
-
+// Character Methods
 std::string const& Character::getName() const
 {
     return (this->_name);
 }
 
-void Character::equip(AMateria* m)
+// MAteria Interaction Methods
+
+void        Character::equip(AMateria* m)
 {
-    int index = 0;
+    int     count = 0;
     for (int i = 0; i < 4; i++)
     {
-        if (_inventory[i] == NULL)
+        if (_inventoryMA[i] == NULL)
         {
-            _inventory[i] = m;
-            return;
+            _inventoryMA[i] = m->clone();
+            return ;
         }
-        index = i;
+        count++;
     }
-    if (index >= 4)
+    if (count >= 4)
     {
+        _reserve = m;
         std::cout << "The inventory is full" << std::endl;
+        std::cout << "The latest AMateria will be lost" << std::endl;
     }
+    _deleteReservedAMateria();
 }
 
-void Character::unequip(int idx)
+void        Character::unequip(int idx)
 {
-    if (idx >= 0 && idx < 4) 
+    if (idx >= 0 && idx < 4)
     {
-        this->_save = _inventory[idx];
-        _inventory[idx] = NULL;
+        this->_reserve = _inventoryMA[idx];
+        _inventoryMA[idx] = NULL;
     }
-    _deleteSaved();
 }
 
-
-void Character::use(int idx, ICharacter& target)
+void        Character::use(int idx, ICharacter& target)
 {
-    if (idx >= 0 && idx < 4 && _inventory[idx] != NULL) {
-        _inventory[idx]->use(target);
-    }
+    if (idx >=0 && idx < 4 && _inventoryMA[idx] != NULL)
+        this->_inventoryMA[idx]->use(target);
+    else if (idx < 0 || idx >= 4)
+        std::cout << "Your Input Is Out Of Range" << std::endl;
+    else
+        std::cout << "** Empty AMateria **" << std::endl;
+}
+
+// other usefule Functions
+void    Character::_deleteReservedAMateria( void )
+{
+    if (_reserve)
+        delete _reserve;
+    _reserve = NULL;
 }
 
 AMateria*   Character::getInventory(int idx) const
 {
     if (idx >= 0 && idx < 4)
-        return _inventory[idx];
+        return _inventoryMA[idx];
     else
         return NULL;
-}
-
-void    Character::_deleteSaved( void )
-{
-    if (_save)
-    {
-        delete _save;
-        _save = NULL;
-    }
 }

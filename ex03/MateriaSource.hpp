@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 14:58:40 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:04:17 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 16:12:51 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 16:36:21 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 #include "IMateriaSource.hpp"
 
-class   MateriaSource : public IMateriaSource
+class MateriaSource : public IMateriaSource
 {
 public:
     MateriaSource   ( void );
     MateriaSource   ( MateriaSource const& other );
     ~MateriaSource  ( void );
     MateriaSource&  operator=( MateriaSource const& other );
+
     void            learnMateria(AMateria*);
     AMateria*       createMateria(std::string const & type);
     AMateria*       getLearnedMateria(int idx) const;

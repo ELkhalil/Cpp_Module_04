@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 10:48:22 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:03:48 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 11:48:46 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 14:44:05 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 #include "AMateria.hpp"
 
-class   Ice : virtual public AMateria
+class   Ice : public AMateria
 {
 public:
     Ice         ( void );
     Ice         ( Ice const& other );
-    Ice&        operator=( Ice const& other );
     ~Ice        ( void );
-    void        use(ICharacter& target);
+    Ice&        operator=( Ice const& other );
     AMateria*   clone() const;
+    void        use(ICharacter& target);
 };
 
 #endif

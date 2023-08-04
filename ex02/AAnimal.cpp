@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,37 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-// Animal Constructors
-Animal::Animal  ( void )
+// AAnimal Constructors
+AAnimal::AAnimal  ( void )
 {
-    std::cout << "Animal Base Class Default Constructor" << std::endl;
-    this->type = "Animal";
+    std::cout << "AAnimal Base Class Default Constructor" << std::endl;
+    this->type = "AAnimal";
 }
 
-Animal::Animal  ( Animal const& other)
+AAnimal::AAnimal  ( AAnimal const& other)
 {
-    std::cout << "Animal Base Class Copy Constructor" << std::endl;
+    std::cout << "AAnimal Base Class Copy Constructor" << std::endl;
     (*this) = other;
 }
 
-Animal::~Animal ( void )
+AAnimal::~AAnimal ( void )
 {
-    std::cout << "Animal Base Class Destructor" << std::endl;
+    std::cout << "AAnimal Base Class Destructor" << std::endl;
 }
 
-// Animal Operators overload
-Animal&     Animal::operator=( Animal const& other )
+// AAnimal Operators overload
+AAnimal&     AAnimal::operator=( AAnimal const& other )
 {
-    std::cout << "Animal Base Class Copy Assignement Operator" << std::endl;
+    std::cout << "AAnimal Base Class Copy Assignement Operator" << std::endl;
     if (this != &other)
         this->type = other.type;
     return (*this);
 }
 
-//Animal Member Functions
-std::string Animal::getType( void ) const
+//AAnimal Member Functions
+std::string AAnimal::getType( void ) const
 {
     return (this->type);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 11:13:13 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:03:45 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 11:58:23 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 14:43:54 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 #include "AMateria.hpp"
 
-class   Cure : virtual public AMateria
+class   Cure : public AMateria
 {
 public:
     Cure         ( void );
     Cure         ( Cure const& other );
-    Cure&        operator=( Cure const& other );
     ~Cure        ( void );
-    void        use(ICharacter& target);
-    AMateria*   clone() const;
+    Cure&        operator=( Cure const& other );
+    AMateria*    clone() const;
+    void         use(ICharacter& target);
 };
 
 #endif

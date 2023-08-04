@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 10:45:18 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 19:12:33 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/04 12:49:36 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/04 16:08:30 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ICharacter.hpp"
-#include "AMateria.hpp"
 
-ICharacter::~ICharacter()
+ICharacter::~ICharacter ( void )
 {
-    // std::cout << "ICharacter Virtual Destructor" << std::endl;
+//     std::cout << "ICharacter Destructor Called" << std::endl;
 }
