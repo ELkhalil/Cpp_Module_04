@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:00:06 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/04 16:35:23 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:42:24 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void    iceAMateriaTesting( void )
     AMateria    *clonedOne = amateria->clone();
     std::cout << clonedOne->getType() << std::endl;
     std::cout << "---- Cleaning Memory ------" << std::endl;
+    
     delete  amateria;
     delete  clonedOne;
 }
@@ -48,6 +49,7 @@ void    cureAMateriaTesting( void )
     AMateria    *clonedOne = amateria->clone();
     std::cout << clonedOne->getType() << std::endl;
     std::cout << "---- Cleaning Memory ------" << std::endl;
+
     delete  amateria;
     delete  clonedOne;
 }
@@ -68,7 +70,9 @@ void    testCopying ( void )
     *copyAMateria = *materia;
     std::cout << "the New Type of copyAMateria->getType() = ";
     std::cout << copyAMateria->getType() << std::endl;
+
     std::cout << "---- Cleaning Memory ---- " << std::endl;
+
     delete  materia;
     delete  copyAMateria;
 }
@@ -101,8 +105,6 @@ void    testingCharacterInventory( void )
     std::cout << "-----" << std::endl;
     std::cout << "----- Cleaning Memory ----" << std::endl;
 
-    delete  amateria;
-    delete  amateria2;
     delete  iCharacter;
 }
 
@@ -114,10 +116,12 @@ void    subjectTest( void )
     src->learnMateria(new Cure());
 
     ICharacter* me = new Character("me");
-    AMateria* tmp;
+
+    AMateria*   tmp;
 
     tmp = src->createMateria("ice");
     me->equip(tmp);
+
     tmp = src->createMateria("cure");
     me->equip(tmp);
 
@@ -141,7 +145,7 @@ int main( void )
     // testCopying();
     // std::cout << "****      TESTING The Character Inventory   ***" << std::endl;
     // testingCharacterInventory();
-    // std::cout << "****      SUBJECT TEST   ***" << std::endl;
+    std::cout << "****      SUBJECT TEST   ***" << std::endl;
     subjectTest();
     return 0;
 }

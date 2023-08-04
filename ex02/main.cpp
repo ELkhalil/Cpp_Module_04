@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:33:19 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/03 10:04:39 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:43:10 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    subjectTest ( void )
 
 int main( void )
 {
-    // subjectTest();
-    arrayOfAnimals();
+    subjectTest();
+    // arrayOfAnimals();
     return 0;
 }

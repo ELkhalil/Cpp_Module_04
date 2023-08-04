@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:20:06 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/04 16:36:57 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:29:06 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 MateriaSource::MateriaSource    ( void )
 {
     // std::cout << "MateriaSource Constructor" << std::endl;
+    this->_reserve = NULL;
     for (int i = 0; i < 4; i++)
     {
         _learnedMaterias[i] = NULL;
@@ -36,6 +37,7 @@ MateriaSource::~MateriaSource   ( void )
         if (_learnedMaterias[i])
             delete _learnedMaterias[i];
     }
+    _deleteReservedAMateria();
 }
 
 // MateriaSource Operators
@@ -46,7 +48,7 @@ MateriaSource&  MateriaSource::operator=( MateriaSource const& other )
     {
         for (int i = 0; i < 4; i++)
         {
-            if (_learnedMaterias[i])
+            if (_learnedMaterias[i] != NULL)
                 delete _learnedMaterias[i];
             _learnedMaterias[i] = NULL;
         }
@@ -65,11 +67,14 @@ MateriaSource&  MateriaSource::operator=( MateriaSource const& other )
 void        MateriaSource::learnMateria(AMateria* m)
 {
     int     count = 0;
+
     for (int i = 0; i < 4; i++)
     {
         if (_learnedMaterias[i] == NULL)
         {
             _learnedMaterias[i] = m->clone();
+            _deleteReservedAMateria();
+            this->_reserve = m;
             return ;
         }
         count++;
@@ -79,6 +84,8 @@ void        MateriaSource::learnMateria(AMateria* m)
         std::cout << "Can't Learn this Materia" << std::endl;
         std::cout << "The Learned Materia inventory is full" << std::endl;
     }
+    _deleteReservedAMateria();
+    this->_reserve = m;
 }
 
 AMateria*   MateriaSource::createMateria(std::string const & type)
@@ -100,4 +107,11 @@ AMateria*   MateriaSource::getLearnedMateria(int idx) const
         return _learnedMaterias[idx];
     else
         return NULL;
+}
+
+void    MateriaSource::_deleteReservedAMateria( void )
+{
+    if (_reserve)
+        delete _reserve;
+    _reserve = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:52:56 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/04 16:25:55 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:33:56 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ Character::~Character    ( void )
         if (this->_inventoryMA[i] != NULL)
             delete this->_inventoryMA[i];
     }
+    _deleteReservedAMateria();
 }
 
 // Character Operators
@@ -91,26 +92,30 @@ void        Character::equip(AMateria* m)
         if (_inventoryMA[i] == NULL)
         {
             _inventoryMA[i] = m->clone();
+            _deleteReservedAMateria();
+            this->_reserve = m;
             return ;
         }
         count++;
     }
     if (count >= 4)
     {
-        _reserve = m;
+        _deleteReservedAMateria();
+        this->_reserve = m;
         std::cout << "The inventory is full" << std::endl;
         std::cout << "The latest AMateria will be lost" << std::endl;
     }
-    _deleteReservedAMateria();
 }
 
 void        Character::unequip(int idx)
 {
     if (idx >= 0 && idx < 4)
     {
+        _deleteReservedAMateria();
         this->_reserve = _inventoryMA[idx];
         _inventoryMA[idx] = NULL;
     }
+    _deleteReservedAMateria();
 }
 
 void        Character::use(int idx, ICharacter& target)

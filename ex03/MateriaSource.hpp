@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:12:51 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/04 16:36:21 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:01:23 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ public:
     AMateria*       getLearnedMateria(int idx) const;
 private:
     AMateria*       _learnedMaterias[4];
+    AMateria*       _reserve;
+    void            _deleteReservedAMateria( void );
 };
 
 #endif

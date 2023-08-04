@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:33:19 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/01 17:40:08 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:57:48 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "WrongCat.hpp"
 
 
-static void subject_test ( void )
+void subject_test ( void )
 {   
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
@@ -35,7 +35,7 @@ static void subject_test ( void )
     delete j;
 }
 
-static void my_test ( void )
+void my_test ( void )
 {
     Animal  *animal;
     for (int i = 0; i < 2; i++)
@@ -62,7 +62,7 @@ static void my_test ( void )
         }    
 }
 
-static void wrong_test ( void )
+void wrong_test ( void )
 {
     const WrongAnimal    *wrong_animal = new WrongCat();
     std::cout << "Wrong animal type: " << wrong_animal->getType() << std::endl;
@@ -78,13 +78,13 @@ int main( void )
     subject_test();
     std::cout << std::endl << std::endl;
 
-    std::cout << "*** My Own test ***" << std::endl << std::endl;
-    my_test();
-    std::cout << std::endl << std::endl;
+    // std::cout << "*** My Own test ***" << std::endl << std::endl;
+    // my_test();
+    // std::cout << std::endl << std::endl;
 
-    std::cout << "*** Wrong Animal/Cat Test ***" << std::endl << std::endl;
-    wrong_test();
-    std::cout << std::endl << std::endl;
+    // std::cout << "*** Wrong Animal/Cat Test ***" << std::endl << std::endl;
+    // wrong_test();
+    // std::cout << std::endl << std::endl;
 
     return 0;
 }
