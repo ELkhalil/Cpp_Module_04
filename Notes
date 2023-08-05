@@ -14,8 +14,7 @@ The Vtable is what make the Polymorphisme work
 
 Virtual : turn on the vTable so we can easily see or understand witch function to be executed
 
-
-        ****    there is a difference between RunTime and CompileTime of course ***
+                ****    there is a difference between RunTime and CompileTime of course ***
 
 -------> at compile time the Compiler understand witch function to witch caller ....
 
@@ -27,7 +26,8 @@ Key Points:
 ---> there always a Vtable for every Type and not every instance of a type !!!! But when there is a Virtual inside it of course
 ---> Virtual Table only stores addresses of virtual function
 
-Pure virtual Function : it has nothing to do so better we add a flag to it = 0 to tell the parser (Part of the compiler) that it will serve
+Pure virtual Function : 
+it has nothing to do so better we add a flag to it = 0 to tell the parser (Part of the compiler) that it will serve
 as only a virtual and it will be overriden by the derived classes...
 
 any class that has a Pure Virtual Function will never be called a class but it's name will change and becomes : 
@@ -44,10 +44,11 @@ this happens through two concepts witch are :
 **** Function overloading ...                           ***Function Overriding ....
 same func with differente parameters                 a child class has the same func name as it's base class
                                                      but the behaviour or the definition of it is differente
+
 SINGLE ACTION IN A differente WAYS = Polymorphisme.
 
 Abstraction : mean hiding all the details and showing only the important stuff from the User
-        example:
+example:
         -> The Coffee Machine u only need to know the selection and the payment.
            without any need to know that the water hot degree or the quantity of the milk in it or anything !! (This Called Abstract Idea)
         -> Like ANY Other Object in Real life (Car - Phone - Lap...)
@@ -66,3 +67,37 @@ u only need an INTERFACE to give u the idea like this isKinginEchec() if true u 
 so u don't need to know how it works or it's logic.
 -> The idea is to make it Independent and have no idea what going on on the other side so we can do our changes to the 
 other classes without any limitations..
+
+                *** Pure Virtual Functio ****
+        by not haviing a Pure Virtual func we still have the option to not override it 
+        but once we have a Pure One it is required to be overriden and the class becomes
+        an Abstract Class
+
+--> In OOp some times we create a class that only contains a bunch of Virtual Functions this way it acts as 
+    a Template Class for our derived classes and force them to ovveride him... THIS IS WHAT REFERS TO AS AN INTERFACE
+
+so INTERFACE = a class that has functions without implementation.
+
+Ex03 _ Polymorphisme
+-------------------------
+
+In the context of the exercise you provided earlier, the term "RPG game" stands for "Role-Playing Game." 
+RPG games are a genre of video games where players assume the roles of characters and immerse themselves in
+a fictional world. Players typically control a single character or a group of characters, known as a party, 
+and engage in various adventures, quests, and battles.
+
+In the exercise, the RPG game is not an actual game that you play on a gaming console or computer. Instead, 
+it serves as a conceptual context for implementing various classes and their interactions. The exercise simulates 
+the mechanics of an RPG game by introducing abstract classes (AMateria, ICharacter) and concrete classes (Ice, Cure, 
+Character, MateriaSource) that represent different aspects of the game, such as characters, abilities, and skills.
+
+The exercise's purpose is to teach and reinforce object-oriented programming concepts in C++, including inheritance, 
+polymorphism, interfaces, and dynamic memory management. By implementing these classes, you will learn how to model 
+and interact with different components of an RPG game in a structured and object-oriented manner.
+
+Remember, the RPG game in this exercise is just a conceptual backdrop to practice and understand the principles 
+of object-oriented programming. It's a fun and engaging way to learn about classes, inheritance, and interfaces 
+in the context of a fictional game world.
+
+the purpose of the Abstract class is to provide the base class form wich will be inherited by other classes 
+in the hierarchy
